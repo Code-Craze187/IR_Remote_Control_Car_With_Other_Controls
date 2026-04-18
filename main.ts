@@ -1,34 +1,34 @@
 // Reads the IR button variable to see if any of them match the button to make the robots LED's change color.
 function Color () {
-    if (value == 22) {
+    if (value == irRemote.irButton(IrButton.Number_1)) {
         color = "Red"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.red1)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.red1)
-    } else if (value == 25) {
+    } else if (value == irRemote.irButton(IrButton.Number_2)) {
         color = "Green"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.green1)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.green1)
-    } else if (value == 13) {
+    } else if (value == irRemote.irButton(IrButton.Number_3)) {
         color = "Blue"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.blue1)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.blue1)
-    } else if (value == 12) {
+    } else if (value == irRemote.irButton(IrButton.Number_4)) {
         color = "Cyan"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.cyan)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.cyan)
-    } else if (value == 24) {
+    } else if (value == irRemote.irButton(IrButton.Number_5)) {
         color = "Purple"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.purple)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.purple)
-    } else if (value == 94) {
+    } else if (value == irRemote.irButton(IrButton.Number_6)) {
         color = "White"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.white)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.white)
-    } else if (value == 8) {
+    } else if (value == irRemote.irButton(IrButton.Number_7)) {
         color = "Yellow"
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.yellow)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.yellow)
-    } else if (value == 64) {
+    } else if (value == irRemote.irButton(IrButton.Ok)) {
         // If the LED's are on, turn them off. But if they are off, turn them back to their original colors
         if (onoff) {
             onoff = false
@@ -76,16 +76,16 @@ function Color_On () {
 }
 // Reads the IR button variable to see if any of them match the button to make the robot move.
 function Motor () {
-    if (value == 70) {
+    if (value == irRemote.irButton(IrButton.Up)) {
         MiniCar.motor(Motorlist.M1, Direction1.Forward, 100)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 100)
-    } else if (value == 68) {
+    } else if (value == irRemote.irButton(IrButton.Left)) {
         MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
         MiniCar.motor(Motorlist.M2, Direction1.Backward, 70)
-    } else if (value == 67) {
+    } else if (value == irRemote.irButton(IrButton.Right)) {
         MiniCar.motor(Motorlist.M1, Direction1.Backward, 70)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
-    } else if (value == 21) {
+    } else if (value == irRemote.irButton(IrButton.Down)) {
         MiniCar.motor(Motorlist.M1, Direction1.Backward, 100)
         MiniCar.motor(Motorlist.M2, Direction1.Backward, 100)
     } else {
