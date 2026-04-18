@@ -96,6 +96,7 @@ function Motor () {
 let color = ""
 let value = 0
 let onoff = false
+irRemote.connectInfrared(DigitalPin.P16)
 // On start, the lights are off.
 onoff = false
 basic.forever(function () {
