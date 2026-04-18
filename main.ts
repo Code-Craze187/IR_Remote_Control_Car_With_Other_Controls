@@ -96,6 +96,7 @@ function Motor () {
 let color = ""
 let value = 0
 let onoff = false
+// Set up a conversation with P16 and the IR Reciver
 irRemote.connectInfrared(DigitalPin.P16)
 // On start, the lights are off.
 onoff = false
