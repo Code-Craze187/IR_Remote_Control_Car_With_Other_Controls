@@ -1,3 +1,15 @@
+function Gear () {
+    if (value == irRemote.irButton(IrButton.Star)) {
+        // This is a test!
+        if (gear) {
+            gear = false
+            geardir = 100
+        } else {
+            gear = true
+            geardir = 250
+        }
+    }
+}
 // Reads the IR button variable to see if any of them match the button to make the robots LED's change color.
 function Color () {
     if (value == irRemote.irButton(IrButton.Number_1)) {
@@ -77,8 +89,8 @@ function Color_On () {
 // Reads the IR button variable to see if any of them match the button to make the robot move.
 function Motor () {
     if (value == irRemote.irButton(IrButton.Up)) {
-        MiniCar.motor(Motorlist.M1, Direction1.Forward, 100)
-        MiniCar.motor(Motorlist.M2, Direction1.Forward, 100)
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
     } else if (value == irRemote.irButton(IrButton.Left)) {
         MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
         MiniCar.motor(Motorlist.M2, Direction1.Backward, 70)
@@ -86,8 +98,8 @@ function Motor () {
         MiniCar.motor(Motorlist.M1, Direction1.Backward, 70)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
     } else if (value == irRemote.irButton(IrButton.Down)) {
-        MiniCar.motor(Motorlist.M1, Direction1.Backward, 100)
-        MiniCar.motor(Motorlist.M2, Direction1.Backward, 100)
+        MiniCar.motor(Motorlist.M1, Direction1.Backward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Backward, geardir)
     } else {
         MiniCar.motor(Motorlist.M1, Direction1.Forward, 0)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
@@ -95,14 +107,21 @@ function Motor () {
 }
 let color = ""
 let value = 0
+let geardir = 0
+let gear = false
 let onoff = false
 // Set up a conversation with P16 and the IR Reciver
 irRemote.connectInfrared(DigitalPin.P16)
 // On start, the lights are off.
 onoff = false
+// On start, the lights are off.
+gear = false
+// On start, the lights are off.
+geardir = 100
 basic.forever(function () {
     // When a button is pressed, grab its output value.
     value = irRemote.returnIrButton()
     Motor()
     Color()
+    Gear()
 })
