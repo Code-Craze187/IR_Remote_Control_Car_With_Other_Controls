@@ -114,9 +114,9 @@ let onoff = false
 irRemote.connectInfrared(DigitalPin.P16)
 // On start, the lights are off.
 onoff = false
-// On start, the lights are off.
+// On start, the gear is normal.
 gear = false
-// On start, the lights are off.
+// On start, the gear is set to the normal value.
 geardir = 100
 basic.forever(function () {
     // When a button is pressed, grab its output value.
