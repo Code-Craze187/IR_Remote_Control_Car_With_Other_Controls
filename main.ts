@@ -66,7 +66,7 @@ function Color_On () {
     } else if (color == "Cyan") {
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.cyan)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.cyan)
-    } else if ((0 as any) == ("Purple" as any)) {
+    } else if (color == "Purple") {
         MiniCar.led_rgb(LED_rgb_L_R.LED_L, LED_color.purple)
         MiniCar.led_rgb(LED_rgb_L_R.LED_R, LED_color.purple)
     } else if (color == "White") {
