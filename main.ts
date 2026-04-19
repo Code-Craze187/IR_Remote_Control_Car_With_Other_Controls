@@ -105,6 +105,11 @@ function Motor () {
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
     }
 }
+function TickCar () {
+    Motor()
+    Color()
+    Gear()
+}
 let color = ""
 let value = 0
 let geardir = 0
@@ -121,7 +126,6 @@ geardir = 100
 basic.forever(function () {
     // When a button is pressed, grab its output value.
     value = irRemote.returnIrButton()
-    Motor()
-    Color()
-    Gear()
+    // Call all of the functions to tell the car what to do.
+    TickCar()
 })
