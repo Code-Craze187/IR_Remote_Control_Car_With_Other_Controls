@@ -92,11 +92,11 @@ function Motor () {
         MiniCar.motor(Motorlist.M1, Direction1.Forward, geardir)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
     } else if (value == irRemote.irButton(IrButton.Left)) {
-        MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
-        MiniCar.motor(Motorlist.M2, Direction1.Backward, 70)
-    } else if (value == irRemote.irButton(IrButton.Right)) {
         MiniCar.motor(Motorlist.M1, Direction1.Backward, 70)
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
+    } else if (value == irRemote.irButton(IrButton.Right)) {
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
+        MiniCar.motor(Motorlist.M2, Direction1.Backward, 70)
     } else if (value == irRemote.irButton(IrButton.Down)) {
         MiniCar.motor(Motorlist.M1, Direction1.Backward, geardir)
         MiniCar.motor(Motorlist.M2, Direction1.Backward, geardir)
