@@ -2,11 +2,11 @@ function Gear () {
     if (value == irRemote.irButton(IrButton.Star)) {
         // This is a test!
         if (gear) {
-            gear = false
             geardir = 100
+            gear = false
         } else {
-            gear = true
             geardir = 250
+            gear = true
         }
     }
 }
