@@ -112,6 +112,7 @@ function Tick () {
         Color()
         Gear()
     } else if (Mode == "Avoid") {
+        Avoid()
         Color()
         Gear()
     }
@@ -135,14 +136,33 @@ function Motor () {
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
     }
 }
+function Get_Mode () {
+    if (value == irRemote.irButton(IrButton.Number_8)) {
+        if (RC == true) {
+            Mode = "Line"
+            RC = false
+        } else {
+            Mode = "RC"
+            RC = true
+        }
+    } else if (value == irRemote.irButton(IrButton.Number_9)) {
+        if (RC == true) {
+            Mode = "Avoid"
+            RC = false
+        } else {
+            Mode = "RC"
+            RC = true
+        }
+    }
+}
 function Avoid () {
     distance = MiniCar.ultra()
     if (distance > 10) {
-        MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
-        MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
     } else {
-        MiniCar.motor(Motorlist.M1, Direction1.Backward, 70)
-        MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
+        MiniCar.motor(Motorlist.M1, Direction1.Backward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
         basic.pause(200)
     }
 }
@@ -150,6 +170,7 @@ let distance = 0
 let color = ""
 let value = 0
 let geardir = 0
+let RC = false
 let gear = false
 let onoff = false
 let Mode = ""
@@ -161,6 +182,7 @@ Mode = "RC"
 onoff = false
 // On start, the gear is normal.
 gear = false
+RC = true
 // On start, the gear is set to the normal value.
 geardir = 100
 basic.forever(function () {
