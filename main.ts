@@ -1,3 +1,6 @@
+function Line () {
+	
+}
 function Gear () {
     if (value == irRemote.irButton(IrButton.Star)) {
         // This is a test!
@@ -86,6 +89,18 @@ function Color_On () {
         }
     }
 }
+function Tick () {
+    if (Mode == "RC") {
+        Motor()
+        Color()
+        Gear()
+    } else if (Mode == "Line") {
+        Color()
+        Gear()
+    } else if (false) {
+    	
+    }
+}
 // Reads the IR button variable to see if any of them match the button to make the robot move.
 function Motor () {
     if (value == irRemote.irButton(IrButton.Up)) {
@@ -105,18 +120,16 @@ function Motor () {
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
     }
 }
-function TickCar () {
-    Motor()
-    Color()
-    Gear()
-}
 let color = ""
 let value = 0
 let geardir = 0
 let gear = false
 let onoff = false
+let Mode = ""
 // Set up a conversation with P16 and the IR Reciver
 irRemote.connectInfrared(DigitalPin.P16)
+// The RC Car mode
+Mode = "RC"
 // On start, the lights are off.
 onoff = false
 // On start, the gear is normal.
@@ -126,6 +139,5 @@ geardir = 100
 basic.forever(function () {
     // When a button is pressed, grab its output value.
     value = irRemote.returnIrButton()
-    // Call all of the functions to tell the car what to do.
-    TickCar()
+    Tick()
 })
