@@ -103,6 +103,7 @@ function Color_On () {
     }
 }
 function Tick () {
+    Get_Mode()
     if (Mode == "RC") {
         Motor()
         Color()
@@ -141,17 +142,21 @@ function Get_Mode () {
         if (RC == true) {
             Mode = "Line"
             RC = false
+            basic.pause(200)
         } else {
             Mode = "RC"
             RC = true
+            basic.pause(200)
         }
     } else if (value == irRemote.irButton(IrButton.Number_9)) {
         if (RC == true) {
             Mode = "Avoid"
             RC = false
+            basic.pause(200)
         } else {
             Mode = "RC"
             RC = true
+            basic.pause(200)
         }
     }
 }
