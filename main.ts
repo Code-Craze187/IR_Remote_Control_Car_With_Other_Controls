@@ -1,5 +1,18 @@
 function Line () {
-	
+    value = MiniCar.LineTracking()
+    if (value == 1) {
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Backward, geardir)
+    } else if (value == 2) {
+        MiniCar.motor(Motorlist.M1, Direction1.Backward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
+    } else if (value == 3) {
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, geardir)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, geardir)
+    } else {
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, 0)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
+    }
 }
 function Gear () {
     if (value == irRemote.irButton(IrButton.Star)) {
@@ -95,10 +108,12 @@ function Tick () {
         Color()
         Gear()
     } else if (Mode == "Line") {
+        Line()
         Color()
         Gear()
-    } else if (false) {
-    	
+    } else if (Mode == "Avoid") {
+        Color()
+        Gear()
     }
 }
 // Reads the IR button variable to see if any of them match the button to make the robot move.
@@ -120,6 +135,18 @@ function Motor () {
         MiniCar.motor(Motorlist.M2, Direction1.Forward, 0)
     }
 }
+function Avoid () {
+    distance = MiniCar.ultra()
+    if (distance > 10) {
+        MiniCar.motor(Motorlist.M1, Direction1.Forward, 70)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
+    } else {
+        MiniCar.motor(Motorlist.M1, Direction1.Backward, 70)
+        MiniCar.motor(Motorlist.M2, Direction1.Forward, 70)
+        basic.pause(200)
+    }
+}
+let distance = 0
 let color = ""
 let value = 0
 let geardir = 0
